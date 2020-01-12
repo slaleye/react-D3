@@ -14,17 +14,11 @@ function App() {
     const svg = select(svgRef.current);
     svg.selectAll("circle")
         .data(data)
-        .join(
-            onenter => onenter.append("circle")
-                .attr("class","new")
-                .attr("r", value => value)
-                .attr("cx", value => value*2 )
-                .attr("cy", value => value*2 )
-                .attr("stroke", 'blue'),
-            onupdate => onupdate.attr("class", "updated"),
-            onexit => onexit.remove()
-            )
-    ; // D3 will create 5 elements of Circle in the svg
+        .join("circle")
+        .attr("r", value => value) // join will handle entering and updating elements
+        .attr("cx", value => value*2 )
+        .attr("cy", value => value*2 )
+        .attr("stroke", 'blue');
   },[data]);
 
   return (<React.Fragment>
