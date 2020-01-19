@@ -1,3 +1,10 @@
+### Part Three: X/Y scales
+
+Methods from D3:
+ -axisBottom
+ -axisRight
+ -scaleLinear
+
 ##  Part Two: line chart with D3
 
 React [Hooks](https://reactjs.org/docs/hooks-effect.html) used: 
@@ -31,3 +38,4 @@ D3 methods:
 - select
 - line
 - curveCardinal
+
