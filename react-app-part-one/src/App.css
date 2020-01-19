@@ -7,6 +7,7 @@ button {
   height: 2em;
 }
 
+/*css properties are not case-sensitive hehe*/
 svg{
-  baCKGround: #eee;
+  baCKGround:rgba(173, 224, 233, 0.349);
 }
