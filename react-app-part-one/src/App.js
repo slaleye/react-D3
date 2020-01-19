@@ -1,31 +1,43 @@
 import React, { useRef, useEffect, useState} from 'react';
-import {select} from 'd3';
+import {select, line, curveCardinal} from 'd3';
 import './App.css';
 
 
 
 function App() {
-   const[data, setData] = useState([10,20,30,40,50]);
-    //useRef : hook used to access Dom element
+  const totalSvgHeight = 150;
+  const initialData = [34,10,20,60,20,40,10];
+  const [dataSet, setData] = useState(initialData);
+
   const svgRef = useRef();
-  // useEffect will be called once the Dom element has been rendered, and also when element in the array passed to it has been changed
+
   useEffect( () => {
     console.log(svgRef);
     const svg = select(svgRef.current);
-    svg.selectAll("circle")
-        .data(data)
-        .join("circle")
-        .attr("r", value => value) // join will handle entering and updating elements
-        .attr("cx", value => value*2 )
-        .attr("cy", value => value*2 )
-        .attr("stroke", 'blue');
-  },[data]);
+    // line generates the d element of the path based on the daa it gets
+    const myLine = line().x((value, index) => index * 50)
+                    .y(value => totalSvgHeight-value)
+                    .curve(curveCardinal); // Started from the bottom now we here XD, make chart start
+                    //from the bottom by removing them from the total height of the svg
+                    // curve on line function to make the graph a curve using curveCardinal
+    // use an array in selectAll().ddata, so D3 generates only one path element with the data inside our dataSet
+    svg.selectAll('path').data([dataSet]).join('path')
+        .attr('d', value => myLine(value))
+        .attr('fill','none')
+        .attr('stroke','orange');
+
+  },[dataSet]);
 
   return (<React.Fragment>
-        <svg ref={svgRef}></svg>
+        <h2>Line Chart</h2>
+        <svg ref={svgRef}>
+        </svg>
         <br/>
-        <button onClick={ () => setData(data.map( value => value+ 5))} >Update Data</button>
-        <button onClick={() => setData(data.filter(value => value < 35))}>Filter Data</button>
+        <button onClick={ () => setData(dataSet.map( value => value+ 5))} >Update + 5</button>
+        <span>&nbsp;</span>
+  <button onClick={() => setData(dataSet.filter(value => value < 35))}>Filter {"<"} 35</button>
+        <span>&nbsp;</span>
+        <button onClick={() => setData(initialData.map(value => value ))}>Reset </button>
       </React.Fragment>);
 }
 
