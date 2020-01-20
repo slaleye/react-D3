@@ -21,20 +21,13 @@ function App() {
   useEffect( () => {
     console.log(svgRef);
     const svg = select(svgRef.current);
-    // Scale needs a domain for the input value from which we scale up or down and a range
-    // To scale the index value from 0-6 of the initialData array
-    // Range of visual representation the width of the svg : 300
-    // If the value is 0 -> 0, 6 -> 300 if between  0 and 6 map to a value betwenn 0 and 300
-    const xScale = scaleLinear()
+       const xScale = scaleLinear()
       .domain([0, initialData.length-1])
       .range([paddingLeft, svgWidth-paddingRight]);
 
     const maxValue = Math.max(...initialData);
       console.log(maxValue);
-    
-      // Domain from 0 to highest value in data, in this case svgHeight -max value
-      // Range from height of the svg :150 , to 0, 0 will be mapped to the bottom
-    const highestYValue = svgHeight - maxValue+paddingBottom
+     const highestYValue = svgHeight - maxValue+paddingBottom
       const yScale = scaleLinear()
                     .domain([0,highestYValue])
                     .range([svgHeight-paddingBottom, 0]);  
@@ -78,13 +71,15 @@ function App() {
           <g className="y-axis"/>
         </svg>
         <br/>
-        <button onClick={ () => setData(dataSet.map( value => value+ 5))} >Update + 5</button>
-        <span>&nbsp;</span>
-        <button onClick={() => setData(dataSet.filter(value => value > 30))}>Filter {">"} 30</button>
-        <span>&nbsp;</span>
-        <button onClick={() => setData(dataSet.filter(value => value < 30))}>Filter {"<"} 30</button>
-        <span>&nbsp;</span>
-        <button onClick={() => setData(initialData.map(value => value ))}>Reset </button>
+        <div className="button-container">
+            <button onClick={ () => setData(dataSet.map( value => value+ 5))} >Update + 5</button>
+            <span>&nbsp;</span>
+            <button onClick={() => setData(dataSet.filter(value => value > 30))}>Filter {">"} 30</button>
+            <span>&nbsp;</span>
+            <button onClick={() => setData(dataSet.filter(value => value < 30))}>Filter {"<"} 30</button>
+            <span>&nbsp;</span>
+            <button onClick={() => setData(initialData.map(value => value ))}>Reset </button>
+        </div>
       </React.Fragment>);
 }
 
