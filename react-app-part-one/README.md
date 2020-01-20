@@ -1,5 +1,7 @@
 ### Part Three: X/Y scales
 
+Demo: D3 Curved Chart [Codepen](https://codepen.io/slaleye/pen/BayGPzz)
+
 Methods from D3:
  -axisBottom
  -axisRight
