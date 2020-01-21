@@ -3,10 +3,12 @@ React and D3 apps
 
 Demo Links:
 
-[Animated Bar Chart](https://codepen.io/slaleye/pen/GRgPOmg)
+* [Animated Bar Chart](https://codepen.io/slaleye/pen/GRgPOmg)
 
-[Curved Line](https://codepen.io/slaleye/pen/BayGPzz)
-- Hooks
+* [Curved Line](https://codepen.io/slaleye/pen/BayGPzz)
+
+Topics:
+- React Hooks 
 - D3 Circles, Charts, X-Y Axis...
 
 
