@@ -58,10 +58,12 @@ function App() {
       .data(dataSet)
         .join('rect')
           .attr('class','bar')
+          .attr('transform','scale(1, -1)')//flip the bar upside down to fix wron animation start
           .attr('x', (value,index) => xScale(index))
-          .attr('y', yScale)
+          .attr('y', -svgHeight+paddingBottom)
           .attr('width', xScale.bandwidth()) // bandwidth equals to the width of one band
-          .attr('height',value => svgHeight - yScale(value) - paddingBottom);
+          .transition()//transition will animate attribute called after it
+            .attr('height',value => svgHeight - yScale(value) - paddingBottom);  
 
   },[dataSet,initialData,randomData]);
 
