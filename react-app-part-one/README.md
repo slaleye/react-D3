@@ -1,3 +1,12 @@
+### Part Four: Bar Chart with scaleBand
+
+* [Animated Bar Chart](https://codepen.io/slaleye/pen/GRgPOmg)
+
+Methods from D3:
+ -scaleBand
+ -scaleColor
+
+ 
 ### Part Three: X/Y scales
 
 Methods from D3:
