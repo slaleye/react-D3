@@ -12,4 +12,4 @@ Topics:
 - D3 Circles, Charts, X-Y Axis...
 
 
-Code Edited from the Tutorial from [The Muratorium](https://www.youtube.com/channel/UCKfcSawDV88REF9jVwqqbag)
+Huge thank you to [The Muratorium](https://www.youtube.com/channel/UCKfcSawDV88REF9jVwqqbag) for his series on D3 and React.
