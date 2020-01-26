@@ -1,3 +1,10 @@
+### Part Five
+Event
+on()
+-mouseenter
+-mouseleave
+svg.selectAll(".tooltip").data([value]) // Syncronize the tooltip with one data element, the current value
+
 ### Part Three: X/Y scales
 
 Demo: D3 Curved Chart [Codepen](https://codepen.io/slaleye/pen/BayGPzz)
