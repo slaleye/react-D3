@@ -1,3 +1,9 @@
+### Part Five
+Event
+on()
+-mouseenter
+svg.selectAll(".tooltip").data([value]) // Syncronize the tooltip with one data element, the current value
+
 ### Part Three: X/Y scales
 
 Methods from D3:
