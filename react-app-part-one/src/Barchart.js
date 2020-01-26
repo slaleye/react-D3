@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState} from 'react';
 import {select,  axisBottom, axisRight, scaleLinear, scaleBand} from 'd3';
-
+import ResizeObserver from 'resize-observer-polyfill';
 
 // Custom Hook observe dom element and return size
 
