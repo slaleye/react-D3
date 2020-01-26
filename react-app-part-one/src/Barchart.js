@@ -9,10 +9,10 @@ const useResizeObserver = (ref) => {
 
     useEffect(() => {
         const ObserveTarget = ref.current;
-        const resizeObserver = new ResizeObserver((entries)=>{
-            console.log(entries);
-            //update dimensions here
-            
+        const resizeObserver = new ResizeObserver((entries)=>{ 
+            entries.forEach(element => {
+                setDimensions(element.contentRect);
+            });         
         });
         resizeObserver.observe(ObserveTarget);
         return () => {
@@ -30,7 +30,7 @@ function BarChart({ data }) {
     const dimensions = useResizeObserver(svgWrapperRef);
 
     const svgHeight = 200;
-    const svgWidth = 400;
+
     const paddingLeft = 10;
     const paddingRight = 30;
     const paddingBottom = 20;
@@ -42,14 +42,14 @@ function BarChart({ data }) {
   
     useEffect( () => {
 
-      const maxValue = Math.max(...data.initialData);
-      const highestYValue = svgHeight - maxValue+paddingBottom;
-
       const svg = select(svgRef.current);
-
+     if(!dimensions) return;
+     const svgWidth = dimensions.width;
+     const maxValue = Math.max(...data.initialData);
+     const highestYValue = svgHeight - maxValue+paddingBottom;
       const xScale = scaleBand()
         .domain(data.dataSet.map((element, index) => index))
-        .range([paddingLeft, svgWidth-paddingRight]) // Change
+        .range([paddingLeft, svgWidth-paddingRight])
         .padding(0.5);
       
    
@@ -102,13 +102,11 @@ function BarChart({ data }) {
             .attr('fill',colorScale)  
             .attr('height',value => svgHeight - yScale(value) - paddingBottom);  
   
-    },[data.dataSet, data.initialData]);
+    },[data.dataSet, data.initialData, dimensions]);
   
     return (
-        
+    
         <div ref={svgWrapperRef}>
-            <h2> Part 06: Responsive Bar Chart</h2>
-
             <svg  height={svgHeight} ref={svgRef}>
                 <g className="x-axis"/>
                 <g className="y-axis"/>

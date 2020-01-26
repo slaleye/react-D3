@@ -15,8 +15,8 @@ function App() {
     randomData:randomData
   }
   return (<React.Fragment>
+        <h2> Part 06: Responsive Bar Chart</h2>
         <BarChart data={data}/>
-      
         <div className="button-container">
             <button onClick={ () => setData(dataSet.map( value => value+ 5))} >Update + 5</button>
             <span>&nbsp;</span>
