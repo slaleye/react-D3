@@ -1,18 +1,23 @@
-body {
+#root {
   margin:5px;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  padding:0 50px;
+
 }
+
 button {
   border:1px solid black;
   border-radius: 2px;
   height: 2em;
 }
 
-/*css properties are not case-sensitive hehe*/
 svg{
-  baCKGround: rgba(238, 238, 238, 0.349);
+  background: rgba(238, 238, 238, 0.349);
+  width: 100%;
 }
 
 .button-container{
