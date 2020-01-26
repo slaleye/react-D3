@@ -2,6 +2,7 @@
 Event
 on()
 -mouseenter
+-mouseleave
 svg.selectAll(".tooltip").data([value]) // Syncronize the tooltip with one data element, the current value
 
 ### Part Three: X/Y scales

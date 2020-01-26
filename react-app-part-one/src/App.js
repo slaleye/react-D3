@@ -67,14 +67,14 @@ function App() {
              console.log(value);
              svg.selectAll(".tooltip")
                 .data([value]) // Sync with one data element
-                .join("text") // Creates a new text element
-                .attr("class","tooltip") 
-                .text(value) // Updates value of text element with current value of rect being hovered
-                .attr("x",xScale(index) + xScale.bandwidth()/2) // display element on x scale, using index of the current element array
-                .attr("text-anchor",'middle') // To center the tooltip in the center add  + xScale.bandwidth()/2
-                .transition()
-                .attr("y",yScale(value)-paddingLeft) // tooltip position on y axis
-                .attr("opacity",1)
+                .join( enter => enter.append("text").attr("y", yScale(value))) // .join("text") Creates a new text element, Adds animation by fixing Yscale of element entering
+                  .attr("class","tooltip") 
+                  .text(value) // Updates value of text element with current value of rect being hovered
+                  .attr("x",xScale(index) + xScale.bandwidth()/2) // display element on x scale, using index of the current element array
+                  .attr("text-anchor",'middle') // To center the tooltip in the center add  + xScale.bandwidth()/2
+                  .transition()
+                    .attr("y",yScale(value)-paddingLeft) // tooltip position on y axis
+                    .attr("opacity",1)
                 ;
             })
           .on("mouseleave", () => svg.select(".tooltip").remove())  
