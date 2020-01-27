@@ -38,7 +38,6 @@ function App() {
   return (<React.Fragment>
         <h2> Part 08: Breaking Bad Timeline</h2>
         <BarChart highlight={highlight} data={episodes}/>
-           <h3>Select A Character</h3>
            <select value={highlight} onChange={e => setHighlight(e.target.value)}>
              <option>Pick a Character</option>
              {characters.map(character => (
