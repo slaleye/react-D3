@@ -10,6 +10,7 @@ Demo Links:
 Topics:
 - React Hooks 
 - D3 Circles, Charts, X-Y Axis...
+- Scales: Linear, Band, Color
 
 
 Huge thank you to [The Muratorium](https://www.youtube.com/channel/UCKfcSawDV88REF9jVwqqbag) for his series on D3 and React.
