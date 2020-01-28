@@ -1,5 +1,5 @@
 import React, { useRef, useEffect} from 'react';
-import {select, min, max, scaleTime, axisBottom} from 'd3';
+import {select, min, max, scaleTime, scaleLinear, axisBottom} from 'd3';
 
 import useResizeObserver from './useResizeObserver';
 
@@ -36,19 +36,25 @@ function BarChart({ data, highlight }) {
 
     const xAxis = axisBottom(xScale);
     
+
     svg.select(".x-axis")
         .style("transform",`translateY(${dimensions.height-30}px)`)
         .call(xAxis);
+
+    const yScale = scaleLinear()
+        .domain([max(data, episode => episode.characters.length),0])
+        .range([0, dimensions.height]);
+    
 
     svg.selectAll('.episode')
         .data(data)
         .join("line")
             .attr("class","episode")
-            .attr("stroke","black")
+            .attr("stroke",episode => episode.characters.includes(highlight) ? "orange" : "green" )
             .attr("x1", episode => xScale(getDate(episode.air_date)))
             .attr("y1", dimensions.height-30)
             .attr("x2", episode => xScale(getDate(episode.air_date)))
-            .attr("y2", 0);
+            .attr("y2",  episode => yScale((episode.characters.length)));
 
     },[data, dimensions, highlight]);
   
