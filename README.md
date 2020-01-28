@@ -1,7 +1,7 @@
 # react-D3
-React and D3 apps
+Breaking Bad Api
 
-- Hooks
-- D3 Circles, Charts, X-Y Axis...
+Timeline of breaking bad characters.
+Select characters to highligh their apparitions in the timeline.
 
-Code Edited from the Tutorial from [The Muratorium](https://www.youtube.com/channel/UCKfcSawDV88REF9jVwqqbag)
+[Beaking Bad API](https://breakingbadapi.com/)
