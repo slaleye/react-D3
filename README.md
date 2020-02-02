@@ -15,7 +15,7 @@ Branches:
 - PARTFIVE:  Animated Bar Chart with Tooltips
 - PARTSIX:  Responsive Bar chart with resizeObserver Hook
 - PARTEIGHT:  Breaking Bad Timeline API
-- PARTNINE:  Animated Bar Chart
+- PARTNINE:  Racing Bar Chart
 
 Topics:
 - React Hooks 
