@@ -18,7 +18,7 @@ const defaultValue = [{
 {
   name:'Vue JS',
   value: 70,
-  color: "green"
+  color: "skyblue"
 },
 {
   name:'Mongo DB',
@@ -28,7 +28,7 @@ const defaultValue = [{
 {
   name:'Angular',
   value: 85,
-  color: "red"
+  color: "salmon"
 }];
 
 
