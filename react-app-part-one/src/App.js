@@ -1,86 +1,82 @@
-import React, { useState, useEffect} from 'react';
-import BarChart from "./Barchart";
+import React, { useState } from 'react';
+import RacingBarChart from "./RacingBarchart";
+import useInterval from "./useInterval";
 import './App.css';
 
-const CHARACTERS_API_LINK ="https://breakingbadapi.com/api/characters?category=Breaking+Bad&limit=100&offset=23";
-const EPISODE_API_LINK ="https://breakingbadapi.com/api/episodes?series=Breaking+Bad&limit=100";
-const CHARACTER_BY_NAME_API_LINK ="https://breakingbadapi.com/api/characters?name=";
 
+const getRandomIndex = array => { return Math.floor(array.length * Math.random())};
+const defaultValue = [{
+  name:'JavaScript',
+  value: 10,
+  color: "yellow"
+},
+{
+  name:'React JS',
+  value: 50,
+  color: "lightblue"
+},
+{
+  name:'Vue JS',
+  value: 70,
+  color: "green"
+},
+{
+  name:'Mongo DB',
+  value: 30,
+  color: "lightgreen"
+},
+{
+  name:'Angular',
+  value: 85,
+  color: "red"
+}];
 
 
 function App() {
 
-  function ProfileInfo (data){
-    console.log(data);
-    
-    if(characterData.name){
-      return (
-        <div className="profile-image-container">
-          <img alt="Character" title={characterData.name} className="profile-image" src={characterData.img}></img>
-            <div className="profile-info">
-              <strong>Name:</strong>   <span>{characterData.name}</span><br></br>
-              <strong>Nickname:</strong> <span>{characterData.nickname}</span>
-            </div>
-        </div>
 
-      );
-    }else{
-      return null;
+
+  const [iteration, setIteration] = useState(0);
+  const [start, setStart] = useState(false);
+  const [dataset, setDataset] = useState(defaultValue);
+   
+  useInterval(() => {
+    if(start){
+        const randomIndex = getRandomIndex(dataset);
+        setDataset(
+          dataset.map((entry , index) => {
+            if(index === randomIndex){
+              return { ...entry, value: entry.value +10}
+            }else{
+              return entry;
+            }
+          })
+        );
+        setIteration(iteration + 1);
     }
-  
+  }, 500);
+  const resetData = () =>{
+
+    setStart(false);
+  /*  setDataset(
+      dataset.map( entry => entry.value - 10*iteration )
+    );*/
+    setIteration(0);
   }
-
-  const [episodes, setEpisodes] = useState([]);
-  const [characters, setCharacters] = useState([]);
-  const [highlight, setHighlight] = useState([]);
-  const [characterData, setCharacterData] = useState([]);
-
-  useEffect( () => {
-    fetch(CHARACTERS_API_LINK)
-      .then(response => response.ok && response.json())
-      .then(data => {
-          setCharacters(data); 
-      })
-      .catch(console.error);
-
-  }, []);
-
-  useEffect( () => {
-    fetch(EPISODE_API_LINK)
-    .then(response => response.ok && response.json())
-    .then(data => {
-        setEpisodes(data); 
-    })
-    .catch(console.error);
-    
-  }, []);
-
-  const getCharacterByName = (name) =>{
-    fetch(CHARACTER_BY_NAME_API_LINK+name)
-    .then(response => response.ok && response.json())
-    .then(data => {
-      setCharacterData(data[0]); 
-    })
-    .catch(console.error);
-
-  }
-
-  const characterOnChangeEvent = (e) => {
-      setHighlight(e.target.value);
-      getCharacterByName(e.target.value);
-  };
- 
   return (<React.Fragment>
-        <h2> Part 08: Breaking Bad Timeline</h2>
-        <ProfileInfo data={characterData} />
-        <BarChart highlight={highlight} data={episodes}/>
-           <select value={highlight} onChange={characterOnChangeEvent}>
-             <option>Pick a Character</option>
-             {characters.map(character => (
-                  <option key={character.name} >{character.name}</option>
-             ))}
-           </select>
-            
+
+        <h2> Part 09: Racing Bar Chart</h2>
+        <RacingBarChart data={dataset} />
+        <br></br>
+        <button onClick={ () => setStart(!start)}>
+          { start ? "Stop the Race" : "Start the Race"}
+        </button>
+        <button onClick={resetData}>
+          Reset
+        </button>
+        <p># Iteration :{iteration}</p>
+       
+  
 
       </React.Fragment>);
 }
