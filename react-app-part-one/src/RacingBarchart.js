@@ -34,7 +34,7 @@ function BarChart({ data }) {
     .range([0, dimensions.width]);
 
     // # 3 Draw bars
-    svg.selectAll("svg")
+    svg.selectAll(".bar")
         .data(data, (entry, index) => entry.name) // returns entry name to make d3 change order of element and not just index as default
         .join(enter => enter.append("rect").attr('y', (entry, index) => yScale(index)))// Sets initial Y attributes of elements on enter
             .attr('class', 'bar')
