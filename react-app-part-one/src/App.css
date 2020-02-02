@@ -18,6 +18,7 @@ button {
 svg{
   background: rgba(238, 238, 238, 0.349);
   width: 100%;
+
 }
 
 .button-container{
@@ -26,26 +27,9 @@ svg{
   justify-content: center;
 }
 
-.tooltip{
-  font-size: 1rem;
-}
 
 h2{
   align-self: center;
 }
 
-.profile-image-container{
-    display: flex;
-    justify-content: space-evenly;
-    padding: 10px;
 
-}
-
-.profile-image-container img {
-  width: 100px;
-  height: 100px;
-}
-.profile-image{
- border-radius: 5px;
-
-}
