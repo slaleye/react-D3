@@ -15,6 +15,7 @@ Branches:
 - PARTFIVE:  Animated Bar Chart with Tooltips
 - PARTSIX:  Responsive Bar chart with resizeObserver Hook
 - PARTEIGHT:  Breaking Bad Timeline API
+- PARTNINE:  Animated Bar Chart
 
 Topics:
 - React Hooks 
@@ -23,3 +24,12 @@ Topics:
 
 
 Huge thank you to [The Muratorium](https://www.youtube.com/channel/UCKfcSawDV88REF9jVwqqbag) for his series on D3 and React.
+
+Usage :
+git clone https://github.com/slaleye/react-D3.git
+
+git checkout <feature/partXX>
+
+npm install
+
+npm run start
